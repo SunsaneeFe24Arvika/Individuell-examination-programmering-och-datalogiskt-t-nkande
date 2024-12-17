@@ -1,1 +1,1 @@
-# Individuell-examination-programmering-och-datalogiskt-t-nkande
+# Individuell-examination-programmering-och-datalogiskt-tänkande
