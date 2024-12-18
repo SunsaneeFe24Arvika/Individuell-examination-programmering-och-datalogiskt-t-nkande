@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Puzzle</title>
+</head>
+<body>
+    <nav>
+        <ul>
+          <li>
+            <a href="uppgift_G.html">Split the Bill</a>
+          </li>
+          <li>
+            <a href="uppgift-VG.html">Word Puzzle</a>
+          </li>
+        </ul>
+      </nav>
+
+      <h1>Välkomment till WORD PUZZLE!</h1>
+      <h2>Regler</h2>
+      <ul>
+        <li>
+            Du får enbart byta ut en boksta åt gången.
+        </li>
+        <li>
+            Varje ord som bildas måste vara ett korrekt engelska ord.
+        </li>
+      </ul>
+
+      <section>
+        <h1>SPEL BÖRJA MED ORDET:</h1>
+        <h2 id="wordStart"></h2>
+        
+
+        <p>Välj en av nedanstående bokstäver och skapa ett nytt ord!</p>
+        <h3 id="alternativOne"></h3>
+
+        <button type="button" id="alternativOne" onclick="alternativOne()">
+            SPELA 
+        </button>
+        
+
+        <label for="letter">Ditt nya ord:</label>
+        <input type="text" id="newWord" name="letter" placeholder="Skriv nytt ord!">
+        <button type="button" onclick="wordResult()">
+            
+            RÄTTA SVARET
+           
+        </button>
+        <h3 id="meddelande"></h3>
+      </section>
+
+      <section class="dittResultat">
+        <h3 id="dinResultat"></h3>
+      </section>
+      <button type="reset" id="resetSpel" onclick="newGame()">
+        Nästa spel
+      </button>
+
+
+
+      <script src="script.js"></script>
+</body>
+</html>
