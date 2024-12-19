@@ -182,7 +182,7 @@ function wordResult() {
 
         }
         else {
-            msg = "Tyärr, försök igen!";
+            msg = "Tyvärr, försök igen!";
 
         }
         document.getElementById("meddelande").innerHTML = msg;
