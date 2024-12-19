@@ -20,11 +20,12 @@
       <h1>Välkomment till WORD PUZZLE!</h1>
       <h2>Regler</h2>
       <ul>
+        <li>Försök ändra ordet från FORE till FIVE</li>
         <li>
-            Du får enbart byta ut en boksta åt gången.
+            Du får enbart byta ut en bokstav åt gången.
         </li>
         <li>
-            Varje ord som bildas måste vara ett korrekt engelska ord.
+            Ordet som bildas måste vara ett korrekt engelska ord.
         </li>
       </ul>
 
@@ -34,27 +35,28 @@
         
 
         <p>Välj en av nedanstående bokstäver och skapa ett nytt ord!</p>
-        <h3 id="alternativOne"></h3>
-
-        <button type="button" id="alternativOne" onclick="alternativOne()">
+        <h3 id="alternativ"></h3>
+        
+        <button type="button" id="alternativOne" onclick="alternativ()">
             SPELA 
         </button>
         
-
-        <label for="letter">Ditt nya ord:</label>
+        <form id="playGame">
+        <label for="letter">Din gissning:</label>
         <input type="text" id="newWord" name="letter" placeholder="Skriv nytt ord!">
         <button type="button" onclick="wordResult()">
             
             RÄTTA SVARET
            
         </button>
+      </form id="resetSpel">
         <h3 id="meddelande"></h3>
       </section>
 
       <section class="dittResultat">
-        <h3 id="dinResultat"></h3>
+        <h3 id="urResult"></h3>
       </section>
-      <button type="reset" id="resetSpel" onclick="newGame()">
+      <button type="reset" id="resetSpel" onclick="nextGame()">
         Nästa spel
       </button>
 
