@@ -44,196 +44,152 @@ function showResult() {
 
 
 //play();
-// 1) Skapa Arrays set för att betämma mål ordet. 
-// 2) Ge användare bokstäver alternativa tillsamman med regler hur användare ska spela.
-// 3) Användare skriver sitt gissning på den nya ord i ruta.
-// 4) Ska en funktion för att rätta svaret. 
+// 1) Skapa Arrays set för att betämma ordet för den här spel. Regler är att spelet börjar med ordet "FOUR", sedan ändrar ett steg i taget till ordet "FIVE"
+// 2) Spelet ska inte vara så svårt för spelaren, då skapar jag en alternativ för verje ord.
+    // lettersSetOne gäller för ord 2 som spelaren ska välja en av bokstäve och sedan skriva ett nytt ord dem gissar på. 
+// 3) Skapa en villkor för att kontrollera att spelaren inte ska skriva ordet längre än 4 bokstäver. Spelaren får en varning annars.
+// 4) Skapa en villkor för att kontrollera att spelaren inte ska ändra bostäver mer än en bokstav. Spelaren får en varning annars.
+// 5) Skapa en input form i HTML för att spelaren kunna skriva sitt eget gissning ord. Använder ".toUpperCase()" för att förhindra error av olika typ av bokstäver.
+   // exempel: om spelaren skrev "Foul" eller "foul" då funktionen ändrat/översätta de till stora bostäver. 
+   // Sedan JavaScript plockar den värdet och kollera med olika villkoren som jag skrivit i "if, else"
+   // Spelaren får meddelande om de gissade rätt och även gissade fel, samt får försöka igen.
+// 6) Start ordet ska ändra automatisk efter verje rätt svar, därför att spelaren ska kunna fortsätta till nästa ord, till de kommer till mål med ordet "FIVE"
 
 
 
 const ordbok = ["FOUR", "FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE", "FIVE"]; // Innehåller ALLA ord i det engelska språket.
+
+//Start ordet börja här
 document.getElementById("wordStart").innerHTML = ordbok[0];
 console.log(ordbok[0]); 
+document.getElementById("alternativ").innerHTML = "A, L, B, M, E";
 
- // 1:a Spel med ord FOUL
-function alternativ() {
-    let wordStart = document.getElementById("wordStart").value;
-    let lettersSetOne = ["A" , "L" , "B" , "M", "E"]; //Skapa Arrays för alternativ 1
-    let lettersSetTwo = ["K" , "I" , "O" , "S", "E"];
-    let lettersSetThree = ["G" , "E" , "T" , "U", "Y"];
-    let lettersSetFour = ["A" , "L" , "B" , "M", "R"];
-    let lettersSetFive = ["E" , "R" , "T" , "O", "E"];
-    let lettersSetSix = ["J" , "P" , "H" , "I", "A"];
-    let lettersSetSeven = ["V" , "G" , "E" , "K", "O"];
-    let letters = "";
-    for (let letter of lettersSetOne) {
-        letters += letter + '<br>';
-    
-
-    if (wordStart === FOUR) {
-        document.getElementById("alternativ").innerHTML = lettersSetOne;
-        console.log (lettersSetOne);
-    }
-    else if (wordStart === FOUL) {
-        document.getElementById("alternativ").innerHTML = lettersSetOne;
-        console.log (lettersSetTwo);
-    }
-    else if (wordStart === FOOL) {
-        document.getElementById("alternativ").innerHTML = lettersSetOne;
-        console.log (lettersSetThree);
-    }
-    else if (wordStart === FOOT) {
-        document.getElementById("alternativ").innerHTML = lettersSetOne;
-        console.log (lettersSetFour);
-    }
-    else if (wordStart === FORT) {
-        document.getElementById("alternativ").innerHTML = lettersSetOne;
-        console.log (lettersSetFive);
-    }
-    else if (wordStart === FORE) {
-        document.getElementById("alternativ").innerHTML = lettersSetOne;
-        console.log (lettersSetSix);
-    }
-    else if (wordStart === FIRE) {
-        document.getElementById("alternativ").innerHTML = lettersSetOne;
-        console.log (lettersSetSeven);
-    }
-    else {
-        exit
-    }
-}
-
-}
-
-    
+let userInputHistory = "FOUR"; //den här variabel använder för att spara historik ord för att for-loop ska jämföra och kontrollera på antal ändring av bokstav. 
+                               // regler är att spelaren får ändra bara en bokstav åt gången.
 
 function wordResult() {
         
-        //Rätta svaret
-        let userInput = document.getElementById("newWord").value;
-        let msg; 
+    
+        const choices = {
+            lettersSetTwo: ["K" , "I" , "O" , "S", "E"],
+            lettersSetThree: ["G" , "E" , "T" , "U", "Y"],
+            lettersSetFour: ["A" , "L" , "B" , "M", "R"],
+            lettersSetFive: ["E" , "R" , "T" , "O", "E"],
+            lettersSetSix: ["J" , "P" , "H" , "I", "A"],
+            lettersSetSeven: ["V" , "G" , "E" , "K", "O"],
+        };
+        let userInput = document.getElementById("newWord").value; //hämta värde från input i html
+        let msg; //meddelande till spelaren
         
-        //ord 1
-        if (userInput === "FOUL" || userInput === "Foul" || userInput === "foul") {
-            msg = "Grattis, Du klarade det!";
-            let wordStart = "FOUL";
-            document.getElementById("wordStart").innerHTML = wordStart;
-            console.log(wordStart);
-            let wordHistory = ["FOUL"];
-            document.getElementById("urResult").innerHTML = "DINA HISTORIK: " + wordHistory;
-            
-        }
+        //kollar antal längden av ordet och jämförar med start ord
+        if (userInput.length < 4 || userInput.length > 4) {
+            alert("Ordet är längre eller kortare än start ord, Prova igen!");
         
-        //ord 2
-        else if (userInput === "FOOL" || userInput === "Fool" || userInput === "fool") {
-            msg = "Grattis, Du klarade det!";
-            let wordStart = "FOOL";
-            document.getElementById("wordStart").innerHTML = wordStart;
-            console.log(wordStart);
-            let wordHistory = ["FOUR", "FOUL", "FOOL"];
-            document.getElementById("urResult").innerHTML = "DINA HISTORIK: " + wordHistory;
-            
-        }
-        //ord 3
-        else if (userInput === "FOOT" || userInput === "Foot" || userInput === "foot") {
-            msg = "Grattis, Du klarade det!";
-            let wordStart = "FOOT";
-            document.getElementById("wordStart").innerHTML = wordStart;
-            console.log(wordStart);
-            let wordHistory = ["FOUR", "FOUL", "FOOL", "FOOT"];
-            document.getElementById("urResult").innerHTML = "DINA HISTORIK: " + wordHistory;
-        }
-        //ord 4
-        else if (userInput === "FORT" || userInput === "Fort" || userInput === "fort") {
-            msg = "Grattis, Du klarade det!";
-            let wordStart = "FORT";
-            document.getElementById("wordStart").innerHTML = wordStart;
-            console.log(wordStart);
-            let wordHistory = ["FOUR", "FOUL", "FOOL", "FOOT", "FORT"];
-            document.getElementById("urResult").innerHTML = "DINA HISTORIK: " + wordHistory;
-        }
-        //ord 5
-        else if (userInput === "FORE" || userInput === "Fore" || userInput === "fore") {
-            msg = "Grattis, Du klarade det!";
-            let wordStart = "FORE";
-            document.getElementById("wordStart").innerHTML = wordStart;
-            console.log(wordStart);
-            let wordHistory = ["FOUR", "FOUL", "FOOL", "FOOT", "FORT", "FORE"];
-            document.getElementById("urResult").innerHTML = "DINA HISTORIK: " + wordHistory;
-        }
-        //ord6
-        else if (userInput === "FIRE" || userInput === "Fire" || userInput === "fire") {
-            msg = "Grattis, Du klarade det!";
-            let wordStart = "FOUL";
-            document.getElementById("wordStart").innerHTML = wordStart;
-            console.log(wordStart);
-            let wordHistory = ["FOUR", "FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE"];
-            document.getElementById("urResult").innerHTML = "DINA HISTORIK: " + wordHistory;
+        //Kollar antal gånger som användare har ändrat bokstäver
+        } else {
+            let countChange = 0;
 
-        }
-        //mål
-        else if (userInput === "FIVE" || userInput === "Five" || userInput === "five") {
-            msg = "Grattis, Du har kommit till målet!";
-            let wordStart = "FIVE";
-            document.getElementById("wordStart").innerHTML = wordStart;
-            console.log(wordStart);
-            let wordHistory = ["FOUR", "FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE", "FIVE"];
-            document.getElementById("urResult").innerHTML = "DIN RES: " + wordHistory;
+            for (let i = 3; i >= 0; i--) {
+                if (userInput.toUpperCase()[i] !== userInputHistory.toUpperCase()[i]) {
+                    countChange += 1;
+                }
+            }
+            if (countChange > 1) {
+                alert("Ajaja! Du har ändrat mer än 1 boktav.");
+            } 
+            else {
+        
+                //word 2
+                if (userInput.toUpperCase() === "FOUL") {
+                    msg = "Grattis, Du klarade det!";
+                    let wordStart = "FOUL";
+                    document.getElementById("wordStart").innerHTML = wordStart;
+                    console.log(wordStart);
+                    document.getElementById("alternativ").innerHTML = choices.lettersSetTwo;
+                    let wordHistory = ["FOUL"];
+                    userInputHistory = "FOUL";
+                    document.getElementById("urResult").innerHTML = "Så här lång har du kommit: " + wordHistory;
+                    
+                }
+                
+                //word 3
+                else if (userInput.toUpperCase() === "FOOL") {
+                    msg = "Grattis, Du klarade det!";
+                    let wordStart = "FOOL";
+                    document.getElementById("wordStart").innerHTML = wordStart;
+                    console.log(wordStart);
+                    document.getElementById("alternativ").innerHTML = choices.lettersSetThree;
+                    let wordHistory = ["FOUL", "FOOL"];
+                    userInputHistory = "FOOL";
+                    document.getElementById("urResult").innerHTML = "Så här lång har du kommit: " + wordHistory;
+                    
+                }
+                //word 4
+                else if (userInput.toUpperCase() === "FOOT") {
+                    msg = "Grattis, Du klarade det!";
+                    let wordStart = "FOOT";
+                    document.getElementById("wordStart").innerHTML = wordStart;
+                    console.log(wordStart);
+                    document.getElementById("alternativ").innerHTML = choices.lettersSetFour;
+                    let wordHistory = ["FOUL", "FOOL", "FOOT"];
+                    userInputHistory = "FOOT";
+                    document.getElementById("urResult").innerHTML = "Så här lång har du kommit: " + wordHistory;
+                }
+                //word 5
+                else if (userInput.toUpperCase() === "FORT") {
+                    msg = "Grattis, Du klarade det!";
+                    let wordStart = "FORT";
+                    document.getElementById("wordStart").innerHTML = wordStart;
+                    console.log(wordStart);
+                    document.getElementById("alternativ").innerHTML = choices.lettersSetFive;
+                    let wordHistory = ["FOUL", "FOOL", "FOOT", "FORT"];
+                    userInputHistory = "FORT";
+                    document.getElementById("urResult").innerHTML = "Så här lång har du kommit: " + wordHistory;
+                }
+                //word 6
+                else if (userInput.toUpperCase() === "FORE") {
+                    msg = "Grattis, Du klarade det!";
+                    let wordStart = "FORE";
+                    document.getElementById("wordStart").innerHTML = wordStart;
+                    console.log(wordStart);
+                    document.getElementById("alternativ").innerHTML = choices.lettersSetSix;
+                    let wordHistory = ["FOUR", "FOUL", "FOOL", "FOOT", "FORT", "FORE"];
+                    userInputHistory = "FORE";
+                    document.getElementById("urResult").innerHTML = "Så här lång har du kommit: " + wordHistory;
+                }
+                //word 7
+                else if (userInput.toUpperCase() === "FIRE") {
+                    msg = "Grattis, Du klarade det!";
+                    let wordStart = "FOUL";
+                    document.getElementById("wordStart").innerHTML = wordStart;
+                    console.log(wordStart);
+                    document.getElementById("alternativ").innerHTML = choices.lettersSetSeven;
+                    let wordHistory = ["FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE"];
+                    userInputHistory = "FIRE";
+                    document.getElementById("urResult").innerHTML = "Så här lång har du kommit: " + wordHistory;
 
-        }
-        else {
-            msg = "Tyvärr, försök igen!";
+                }
+                //Goal
+                else if (userInput.toUpperCase() === "FIVE") {
+                    msg = "Grattis, Du har kommit till målet!";
+                    let wordStart = "FIVE";
+                    document.getElementById("wordStart").innerHTML = wordStart;
+                    console.log(wordStart);
+                    let wordHistory = ["FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE", "FIVE"];
+                    document.getElementById("urResult").innerHTML = "Så här lång har du kommit: " + wordHistory;
 
+                }
+                else {
+                    msg = "Tyvärr, försök igen!";
+
+                }
+            }
         }
         document.getElementById("meddelande").innerHTML = msg;
         console.log(msg);
         
     }
 
-    function nextGame() {
-    let startWord = prompt('Skriv in start ordet');
-    let userInput = prompt('din gissning');
-    let matchCount = 0;
+ 
 
-    if (startWord !== userInput) {
-    console.log('Båda orden måste innehålla lika bokstäver');
-    }
-
-    for (let i = 0; i < startWord.length; i++) {
-    if (startWord[i] === userInput[i]) {
-        matchCount++;
-    }
-    }
-    alert(`Det fanns ${matchCount} likheter mellan orden`);
-    
-    }
-    /*function newGame() {
-        document.getElementById("resetSpel").reset();
-    }
-
-
-
- /*
-
-play();
-
-function play()
-    SET variabel ordbok = [FOUR, FOUL, FOOL, FOOT, FORT, FORE, FIRE, FIVE]; // Innehåller ALLA ord i det engelska språket
-    SET variabel startOrd till "FOUR";
-    SET variabel slutordOrd till "FIVE";
-
-
-end function
-
-function isOneLetterApart(wordOne, wordTwo)
-    SET variabel diffCount till 0;
-
-    // Här behöver du skriva koden för din funktion
-
-    return diffCount === 1; // returnerar sant om endast en bokstav ändrats, annars falskt
-end function
-
-*/
-
-// Js för PlayGround
 
