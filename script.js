@@ -1,19 +1,26 @@
 // G-Version - Split the Nota
 // Skriv din pseudokod innanför nedanstående kommentarsblock
 
-// 1) Skapa funktion för att räkna ut dricks från percent till kronor.
-//Användare måsta ange dricks i decimalform t.ex. 0.10, 0.20
-// 2) Skapa funktion för att dela nota per person. 
-//Detta fungerar genom att funktionen hemta summan av dricks i kronor från funktionen ovan.
-// 3) Hämta värden, för att byta värden av variabel från "text" till "siffror" behöver lägga till "Number" i syntax också
-// Skapa funktionför knappen för att visa resultat (summa / person). 
+//Start Funktion
+// 1) Funktion för att räkna ut dricks från percent till kronor. // (0.10 * 100) * 1000) / 100 = 100 SEK
+        //INPUT i HTML i decimalform t.ex. 0.10, 0.20
+// 2) Funktion för att dela nota per person. 
+        //SET variabel totalDricks = Hämta värdet från Funtion räknar dricks
+        //SET variabel totalSumma = Hämta värdet från HTML 
+        //SET variabel antalPerson = Hämta värdet från HTML
+        //SET variabel dricks = Hämta värdet från HTML
+// 3) If totalSumma, antalPerson, dricks minder eller lika med 0
+        //Anropa med Alert för att fylla i värden i alla fältet.
+// 4) SET variabel result för att skiva ut summa / person.
+        // resultat.toFixed(2) för att visa summa i 2 decimal.
+//End Funktion
 
-function precentDricks(totalSumma, dricks) {
-    return ((dricks * 100) * totalSumma) / 100;    // (0.10 * 100) * 1000) / 100 = 100 SEK
+function percentDricks(totalSumma, dricks) {
+    return ((dricks * 100) * totalSumma) / 100;    
 }
 
 function delaNota(totalSumma, antalPerson, dricks) {
-    var totalDricks = precentDricks(totalSumma, dricks);
+    var totalDricks = percentDricks(totalSumma, dricks);
     return (totalSumma + totalDricks) / antalPerson;
 }
 
@@ -44,16 +51,20 @@ function showResult() {
 
 
 //play();
-// 1) Skapa Arrays set för att betämma ordet för den här spel. Regler är att spelet börjar med ordet "FOUR", sedan ändrar ett steg i taget till ordet "FIVE"
-// 2) Spelet ska inte vara så svårt för spelaren, då skapar jag en alternativ för verje ord.
-    // lettersSetOne gäller för ord 2 som spelaren ska välja en av bokstäve och sedan skriva ett nytt ord dem gissar på. 
-// 3) Skapa en villkor för att kontrollera att spelaren inte ska skriva ordet längre än 4 bokstäver. Spelaren får en varning annars.
-// 4) Skapa en villkor för att kontrollera att spelaren inte ska ändra bostäver mer än en bokstav. Spelaren får en varning annars.
-// 5) Skapa en input form i HTML för att spelaren kunna skriva sitt eget gissning ord. Använder ".toUpperCase()" för att förhindra error av olika typ av bokstäver.
+// 1) SET Arrays för att skapa ordbok.
+    // const ordbok = []
+// 2) Börja start ord med array nr. [0] i ordbok
+    // skapa h3 i HTML för skriva ut bokstäver alternativ 1 i HTML
+// 3) Funktion wordResult() till en button i HTML, Aktiv funktionen när man tyrcka.
+// 4) SET 7 st. Arrays för altertiv 2 - 7
+// 5) INPUT i HTML för gissa nytt ord. 
+//    Använder ".toUpperCase()" för att förhindra error av olika typ av bokstäver.
    // exempel: om spelaren skrev "Foul" eller "foul" då funktionen ändrat/översätta de till stora bostäver. 
-   // Sedan JavaScript plockar den värdet och kollera med olika villkoren som jag skrivit i "if, else"
-   // Spelaren får meddelande om de gissade rätt och även gissade fel, samt får försöka igen.
-// 6) Start ordet ska ändra automatisk efter verje rätt svar, därför att spelaren ska kunna fortsätta till nästa ord, till de kommer till mål med ordet "FIVE"
+   // if userInput ord kortare än < 4 index eller userInput längre än > 4, Alert meddelande.
+   // For-loop räknar antal bokstäver som ändrat. 
+   // loopen börjar med värdet i=3, sedan förtsätter så länger i är större än eller lika med 0, varje iteration miska i med 1, så jämförar ett stag åt vänster.
+   // Alert om hitta skillnaden.
+// 6) else if loop till nästa ord till ordet "FIVE"
 
 
 
