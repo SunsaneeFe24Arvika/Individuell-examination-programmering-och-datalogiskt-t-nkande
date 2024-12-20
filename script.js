@@ -31,7 +31,7 @@ function showResult() {
     // Visa resultat beräkningen i HTML
     const resultat = delaNota(totalSumma, antalPerson, dricks);
     document.getElementById("resultat").innerHTML = resultat.toFixed(2) + ' SEK';
-    console.log(resultat.toFixed(2) + ' SEK');
+    
 }
 
 
@@ -61,7 +61,6 @@ const ordbok = ["FOUR", "FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE", "FIVE"];
 
 //Start ordet börja här
 document.getElementById("wordStart").innerHTML = ordbok[0];
-console.log(ordbok[0]); 
 document.getElementById("alternativ").innerHTML = "A, L, B, M, E";
 
 let userInputHistory = "FOUR"; //den här variabel använder för att spara historik ord för att for-loop ska jämföra och kontrollera på antal ändring av bokstav. 
@@ -104,7 +103,6 @@ function wordResult() {
                     msg = "Grattis, Du klarade det!";
                     let wordStart = "FOUL";
                     document.getElementById("wordStart").innerHTML = wordStart;
-                    console.log(wordStart);
                     document.getElementById("alternativ").innerHTML = choices.lettersSetTwo;
                     let wordHistory = ["FOUL"];
                     userInputHistory = "FOUL";
@@ -117,7 +115,6 @@ function wordResult() {
                     msg = "Grattis, Du klarade det!";
                     let wordStart = "FOOL";
                     document.getElementById("wordStart").innerHTML = wordStart;
-                    console.log(wordStart);
                     document.getElementById("alternativ").innerHTML = choices.lettersSetThree;
                     let wordHistory = ["FOUL", "FOOL"];
                     userInputHistory = "FOOL";
@@ -129,7 +126,6 @@ function wordResult() {
                     msg = "Grattis, Du klarade det!";
                     let wordStart = "FOOT";
                     document.getElementById("wordStart").innerHTML = wordStart;
-                    console.log(wordStart);
                     document.getElementById("alternativ").innerHTML = choices.lettersSetFour;
                     let wordHistory = ["FOUL", "FOOL", "FOOT"];
                     userInputHistory = "FOOT";
@@ -140,7 +136,6 @@ function wordResult() {
                     msg = "Grattis, Du klarade det!";
                     let wordStart = "FORT";
                     document.getElementById("wordStart").innerHTML = wordStart;
-                    console.log(wordStart);
                     document.getElementById("alternativ").innerHTML = choices.lettersSetFive;
                     let wordHistory = ["FOUL", "FOOL", "FOOT", "FORT"];
                     userInputHistory = "FORT";
@@ -151,7 +146,6 @@ function wordResult() {
                     msg = "Grattis, Du klarade det!";
                     let wordStart = "FORE";
                     document.getElementById("wordStart").innerHTML = wordStart;
-                    console.log(wordStart);
                     document.getElementById("alternativ").innerHTML = choices.lettersSetSix;
                     let wordHistory = ["FOUR", "FOUL", "FOOL", "FOOT", "FORT", "FORE"];
                     userInputHistory = "FORE";
@@ -162,7 +156,6 @@ function wordResult() {
                     msg = "Grattis, Du klarade det!";
                     let wordStart = "FOUL";
                     document.getElementById("wordStart").innerHTML = wordStart;
-                    console.log(wordStart);
                     document.getElementById("alternativ").innerHTML = choices.lettersSetSeven;
                     let wordHistory = ["FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE"];
                     userInputHistory = "FIRE";
@@ -174,7 +167,6 @@ function wordResult() {
                     msg = "Grattis, Du har kommit till målet!";
                     let wordStart = "FIVE";
                     document.getElementById("wordStart").innerHTML = wordStart;
-                    console.log(wordStart);
                     let wordHistory = ["FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE", "FIVE"];
                     document.getElementById("urResult").innerHTML = "Så här lång har du kommit: " + wordHistory;
 
@@ -186,7 +178,6 @@ function wordResult() {
             }
         }
         document.getElementById("meddelande").innerHTML = msg;
-        console.log(msg);
         
     }
 
